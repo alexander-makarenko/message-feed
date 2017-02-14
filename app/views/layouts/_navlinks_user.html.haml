@@ -3,9 +3,10 @@
     #user-name= current_user.name
     = image_tag current_user.avatar_url, size: 30, id: 'avatar'
     %span.caret
-  %ul.dropdown-menu{ 'aria-labelledby': 'accountDropdown' }    
-    %li.dropdown-header= current_user.email
-    %li.divider{ role: 'separator' }
+  %ul.dropdown-menu{ 'aria-labelledby': 'accountDropdown' }
+    - if current_user.email
+      %li.dropdown-header= current_user.email
+      %li.divider{ role: 'separator' }
     %li
       = link_to signout_path, method: :delete do
         %span.glyphicon.glyphicon-log-out
