@@ -1,0 +1,6 @@
+= form_for Message.new, remote: true, html: { class: ['reply-form', 'collapse'], id: parent_id.present? ? "message_#{parent_id}_reply" : 'new_post' } do |f|
+  .form-group
+    = f.text_area :body, placeholder: 'Write something…', rows: 3, class: ['form-control', 'vresize'], id: parent_id.present? ? "message_#{parent_id}_reply_body" : 'new_post_body'
+  = f.hidden_field :parent_id, value: parent_id, id: nil
+  .form-group.text-right
+    = f.submit 'Post', class: ['btn', 'btn-primary']

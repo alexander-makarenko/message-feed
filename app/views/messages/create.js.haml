@@ -1,0 +1,57 @@
+- if @message.is_comment?
+
+  var $replyForm = $('#message_#{@parent_message.id}_reply');
+  var $invalidFields = $('#{invalid_fields_selector_for(@message, prefix: "message_#{@parent_message.id}_reply" )}');
+
+- else
+
+  var $replyForm = $('#new_post');
+  var $invalidFields = $('#{invalid_fields_selector_for(@message, prefix: "new_post" )}');
+
+
+- if @message.new_record?
+
+  // show or update the validation errors
+  var errorsHtml = '#{j(render "shared/validation_errors", obj: @message)}';
+  var $errorsContainer = $replyForm.children('.validation-errors');
+  :plain
+    if ($errorsContainer.length) {
+      $errorsContainer.replaceWith(errorsHtml);
+    } else {
+      $replyForm.prepend(errorsHtml);
+    }
+
+  // mark invalid fields    
+  $invalidFields.markInvalid();
+
+- else
+
+  - if @message.is_comment?
+
+    // update the html of the parent message and all its descendants (which
+    // include the newly posted message)
+    var messageHtml = '#{j(render "message", message: @parent_message)}';
+    $('#message-#{@parent_message.id}').replaceWith(messageHtml);
+
+    // reattach the event handlers to the comment toggles and comments hide/show buttons
+    animatePostCommentsToggles();
+    activateCommentsControls;
+
+  - else
+  
+    // prepend the message html to the posts list
+    var messageHtml = '#{j(render "message", message: @message)}';
+    $('#messages .root-list').prepend(messageHtml);
+
+    // reload the reply form
+    $replyForm.replaceWith('#{j(render "reply_form", parent_id: nil)}');  
+
+  // fade out and remove any flash messages currently on-screen
+  removeFlash();
+
+  // show a new flash message after any existing ones have faded out
+  :plain
+    setTimeout(function() {
+      showFlash('#{j(render "layouts/flash")}');
+      animateFlash();
+    }, 200);

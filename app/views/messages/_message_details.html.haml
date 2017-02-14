@@ -1,0 +1,7 @@
+.message-details
+  .author-name
+    = message.user.name
+  .separator
+    ·
+  .timestamp
+    = "#{time_ago_in_words(message.updated_at)} ago"

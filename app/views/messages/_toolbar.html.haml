@@ -1,0 +1,12 @@
+#toolbar
+  .btn-toolbar{ role: 'toolbar' }
+    .btn-group{ role: 'group' }
+      = button_tag 'Show Comments', type: 'button', class: ['btn', 'btn-default'], id: 'show-comments'
+      = button_tag 'Hide Comments', type: 'button', class: ['btn', 'btn-default'], id: 'hide-comments'
+    - if policy(:message).create?
+      .btn-group
+        = button_tag type: 'button', class: ['btn', 'btn-primary'], id: 'new_post_btn', data: { toggle: 'collapse', target: '#new_post' } do
+          %span.glyphicon.glyphicon-pencil
+          Add Post…
+  - if policy(:message).create?
+    = render 'reply_form', parent_id: nil

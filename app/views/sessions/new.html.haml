@@ -1,0 +1,15 @@
+#signin-form
+  .list-group    
+    .list-group-item#signin-options
+      
+      = link_to '/auth/google_oauth2', class: 'btn btn-default' do
+        = image_tag asset_path('google-logo'), size: '16'
+        Sign in with Google
+
+      = link_to '/auth/github', class: 'btn btn-default' do
+        = image_tag asset_path('github-logo'), size: '16'
+        Sign in with GitHub
+
+      = link_to '/auth/facebook', class: 'btn btn-default' do
+        = image_tag asset_path('facebook-logo'), size: '16'
+        Sign in with Facebook

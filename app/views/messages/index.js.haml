@@ -1,0 +1,5 @@
+$('#messages .root-list').append("#{j(render partial: 'message', collection: @posts)}");
+- if @posts.next_page
+  $('div.pagination').replaceWith("#{j(will_paginate @posts)}");
+- else
+  $('div.pagination').remove();

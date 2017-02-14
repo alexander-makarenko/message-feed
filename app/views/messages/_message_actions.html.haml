@@ -1,0 +1,7 @@
+.message-actions
+  %ul
+    - if policy(message).create?
+      %li.reply_link= link_to 'Reply', "#message_#{message.id}_reply", data: { toggle: 'collapse', turbolinks: false }
+    / - if policy(message).update?
+    /   %li.separator ·
+    /   %li.edit_link= link_to 'Edit', '#', data: { turbolinks: false }

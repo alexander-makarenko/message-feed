@@ -1,0 +1,11 @@
+= render 'toolbar'
+= render 'signin_invitation'
+
+- if @posts.any?
+  #messages
+    %ul.root-list
+      = render partial: 'message', collection: @posts
+
+.text-center
+  = render 'shared/ajax_in_progress'
+  = will_paginate @posts

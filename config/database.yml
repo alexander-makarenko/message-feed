@@ -1,0 +1,21 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: postgres
+
+development:
+  <<: *connection
+  database: message_feed_development
+  password: <%= ENV['database_password'] %>
+
+test:
+  <<: *connection
+  database: message_feed_test
+  password: <%= ENV['database_password'] %>
+
+production:
+  <<: *connection
+  database: message_feed_production  
+  password: <%= ENV['database_password'] %>

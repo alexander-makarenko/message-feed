@@ -1,0 +1,138 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#toolbar {
+  overflow: auto;
+
+  .btn-toolbar {
+    float: right;
+    margin-bottom: 2em;
+  }
+  
+  .btn-group:last-of-type {
+    margin-left: 1em;
+  }
+  
+  #new_post {
+    clear: right;
+  }
+}
+
+#messages {
+  padding-top: 1.5em;
+
+  ul {
+    list-style: none;    
+  }
+
+  .root-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .post {
+    margin-bottom: 1.8em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    > .main-message {
+      padding-left: 1.3em;
+      background-color: rgb(247,247,247);
+      border: 1px solid #ddd;
+      border-radius: .25em;
+    }
+    .wrapper-inner {
+      padding-right: .7em;
+    }    
+    > .child-list {
+      padding-left: 5.5em;
+    }    
+  }
+
+  .comment {
+    > .main-message {
+      padding: 0;
+    }
+    .wrapper-inner {
+      padding-right: 1.3em;
+    }
+    > .child-list {
+      padding-left: 3.5em;
+    }
+  }
+
+  .main-message {
+    display: table;
+    width: 100%;
+  }
+
+  .author-avatar {
+    display: table-cell;
+    width: 1em;
+    vertical-align: top;
+    text-align: right;
+    img {
+      border-radius: 5%;
+      margin: 1.3em 1.3em 0 0;
+    }
+  }
+
+  .wrapper {
+    display: table;
+    margin: 1.2em 0;
+    width: 100%;    
+  }
+
+  .message-details, .message-body {
+    padding-bottom: .6em;
+  }
+
+  .message-details {
+    overflow: auto;
+    div {
+      float: left;
+    }
+  }
+
+  .separator {
+    padding: 0 .6em;
+  }
+
+  .separator, .timestamp {
+    color: #888;
+  }
+
+  .author-name {
+    font-weight: bold;
+  }
+
+  .message-actions ul {
+    overflow: auto;
+    padding: 0;
+    li {
+      float: left;
+    }
+  }
+
+  .comments-toggle-wrapper {
+    width: 0;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 1.5em;
+    padding: 0;
+    border-left: 1px solid #eee;
+    .glyphicon {
+      cursor: pointer;
+      padding: .4em;
+      color: #ccc;
+      &:hover {
+        color: #999;
+      }
+    }
+  }
+
+  .reply-form {
+    padding-right: 2.7em;
+  }
+}
