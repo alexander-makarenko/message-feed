@@ -2,7 +2,10 @@ class MessagesController < ApplicationController
   before_action { authorize Message }
   
   def index
-    @posts = Message.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @posts = Message.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 5)      
+    raise ArgumentError if @posts.out_of_bounds?    
+  rescue ArgumentError, RangeError
+    redirect_to root_path
   end
 
   def create
